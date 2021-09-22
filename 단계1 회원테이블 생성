@@ -1,0 +1,71 @@
+# 데이터베이스 생성
+DROP DATABASE IF EXISTS shop1;
+CREATE DATABASE shop1;
+USE shop1;
+
+# 회원 테이블
+CREATE TABLE `member` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    loginId CHAR(50) NOT NULL,
+    loginPw CHAR(50) NOT NULL,
+    `name` CHAR(30) NOT NULL,
+    email CHAR(50) NOT NULL,
+    cellphoneNo CHAR(20) NOT NULL
+);
+
+# 회원 1명 추가
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user1',
+loginPw = '1234',
+`name` = '홍길동',
+email = 'test@test.com',
+cellphoneNo = '01012341234';
+
+# 회원 데이터 대량 생성, 100만명 될 때 까지 반복실행
+INSERT INTO `member`
+(
+    regDate,
+    updateDate,
+    loginId,
+    loginPw,
+    `name`,
+    email,
+    cellphoneNo
+)
+SELECT NOW(),
+NOW(),
+CONCAT('user', RAND()),
+'1234',
+'홍길동',
+'test@test.com',
+'01012341234'
+FROM `member`;
+
+# 전체 회원 수 확인
+SELECT COUNT(*)
+FROM `member`;
+
+# 굉장히 빠름
+# 이유 : 인덱스가 있어서
+SELECT SQL_NO_CACHE *
+FROM `member`
+WHERE id = 1;
+
+# 굉장히 느림
+# 이유 : 풀스캔
+SELECT SQL_NO_CACHE *
+FROM `member`
+WHERE loginId = 'user1';
+
+# loginId 에 대해서 색인 생성
+ALTER TABLE `member` ADD INDEX (`loginId`); 
+
+# 굉장히 빠름
+# 이유 : 인덱스 사용
+SELECT SQL_NO_CACHE *
+FROM `member`
+WHERE loginId = 'user1';
