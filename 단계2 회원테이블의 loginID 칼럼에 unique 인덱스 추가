@@ -1,0 +1,18 @@
+# 인덱스 제거
+ALTER TABLE `member` DROP INDEX `loginId`; 
+
+# 회원테이블의 모든 데이터 제거
+TRUNCATE `member`;
+
+# 일반 인덱스가 아닌 유니크 인덱스 추가
+ALTER TABLE `member` ADD UNIQUE INDEX (`loginId`);
+
+# 회원 1명 다시 추가
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'user1',
+loginPw = '1234',
+`name` = '홍길동',
+email = 'test@test.com',
+cellphoneNo = '01012341234';
