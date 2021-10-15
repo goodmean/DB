@@ -1,0 +1,40 @@
+# cateItem 테이블 만들기
+DROP TABLE IF EXISTS cateItem;
+
+CREATE TABLE cateItem (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    depth1Name CHAR(30) NOT NULL,
+    depth1Code CHAR(30) NOT NULL,
+    depth2Name CHAR(30) NOT NULL,
+    depth2Code CHAR(30) NOT NULL,
+    depth3Name CHAR(30) NOT NULL,
+    depth3Code CHAR(30) NOT NULL,
+    depth4Name CHAR(30) NOT NULL,
+    depth4Code CHAR(30) NOT NULL
+);
+
+INSERT INTO cateItem
+SET regDate = NOW(),
+updateDate = NOW(),
+depth1Name = '일반',
+depth1Code = 'common',
+depth2Name = '여성의류',
+depth2Code = 'woman',
+depth3Name = '원피스',
+depth3Code = 'one-piece',
+depth4Name = '원피스',
+depth4Code = 'one-piece';
+
+INSERT INTO cateItem
+SET regDate = NOW(),
+updateDate = NOW(),
+depth1Name = '일반',
+depth1Code = 'common',
+depth2Name = '여성의류',
+depth2Code = 'woman',
+depth3Name = '상의',
+depth3Code = 'top',
+depth4Name = '티셔츠',
+depth4Code = 't-shirts';
