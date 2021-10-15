@@ -1,0 +1,115 @@
+# product 테이블 만들기
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE product (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    `name` CHAR(50) NOT NULL,
+    price INT(10) UNSIGNED NOT NULL,
+    salePrice INT(10) UNSIGNED NOT NULL,
+    cateItemId INT(10) UNSIGNED NOT NULL
+);
+
+INSERT INTO product
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '단가라 쉬폰 원피스',
+price = 39800,
+salePrice = 39800,
+cateItemId = 1;
+
+# productReal 테이블 만들기
+DROP TABLE IF EXISTS productReal;
+
+CREATE TABLE productReal (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    productId INT(10) UNSIGNED NOT NULL,
+    `quantity` SMALLINT(2) UNSIGNED NOT NULL,
+    opt1Name CHAR(50) NOT NULL,
+    opt1Code CHAR(50) NOT NULL,
+    opt2Name CHAR(50) NOT NULL,
+    opt2Code CHAR(50) NOT NULL,
+    opt3Name CHAR(50) NOT NULL,
+    opt3Code CHAR(50) NOT NULL
+);
+
+# RED, 44, 10개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'RED',
+opt1Code = 'RED',
+opt2Name = '44',
+opt2Code = '44',
+opt3Name = '',
+opt3Code = '',
+quantity = 10;
+
+# RED, 55, 20개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'RED',
+opt1Code = 'RED',
+opt2Name = '55',
+opt2Code = '55',
+opt3Name = '',
+opt3Code = '',
+quantity = 20;
+
+# RED, 66, 0개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'RED',
+opt1Code = 'RED',
+opt2Name = '66',
+opt2Code = '66',
+opt3Name = '',
+opt3Code = '',
+quantity = 0;
+
+# BLUE, 44, 12개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'BLUE',
+opt1Code = 'BLUE',
+opt2Name = '44',
+opt2Code = '44',
+opt3Name = '',
+opt3Code = '',
+quantity = 12;
+
+# BLUE, 55, 14개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'BLUE',
+opt1Code = 'BLUE',
+opt2Name = '55',
+opt2Code = '55',
+opt3Name = '',
+opt3Code = '',
+quantity = 14;
+
+# BLUE, 66, 16개
+INSERT INTO productReal
+SET regDate = NOW(),
+updateDate = NOW(),
+productId = 1,
+opt1Name = 'BLUE',
+opt1Code = 'BLUE',
+opt2Name = '66',
+opt2Code = '66',
+opt3Name = '',
+opt3Code = '',
+quantity = 16;
